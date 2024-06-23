@@ -1,0 +1,17 @@
+# created by virtualenv automatically
+
+# Ambiente virtual
+Lib/
+Scripts/
+pyvenv.cfg
+
+# Ferramentas de IDE/Editor de Texto
+.vscode/
+
+# Logs do Scrapy
+.scrapy/
+*.log
+
+# Arquivos de compilação do Python
+*.pyc
+__pycache__/

@@ -1,2 +1,2 @@
 # web_scraper_test
-Development of web scrapers for personal development
+Development of a web scraper using Scrapy for personal development
