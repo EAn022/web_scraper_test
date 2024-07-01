@@ -31,12 +31,8 @@ class QuotePipeline:
 
 
     def store_db(self, item):
-        self.cursor.execute("""insert into quotes_tb values(?, ?, ?)"""
-                            (
-                                item["quote"][0],
-                                item["author"][0],
-                                item["tag"][0]
-                            ))
+        self.cursor.execute("""INSERT INTO quotes_tb VALUES(?, ?, ?)""", (item['quote'][0], item['author'][0], item['tag'][0]))
+        
         
         self.connection.commit()
 
