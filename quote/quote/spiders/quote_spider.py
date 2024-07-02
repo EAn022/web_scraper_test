@@ -1,13 +1,22 @@
 from typing import Any
 import scrapy
 from scrapy.http import Response
+from scrapy.http import FormRequest
 from ..items import QuoteItem
 
 class Quote_spider(scrapy.Spider):
     name = "quotes"
-    start_urls = ["https://quotes.toscrape.com/"]
+    start_urls = ["https://quotes.toscrape.com/login"]
 
     def parse(self, response):
+        token = response.css("form input::attr(value)").extract_first()
+        return FormRequest.from_response(response, formdata = {
+                                                                "csrf" : token,
+                                                                "username" : "abc@aaa.com",
+                                                                "password" : "123abc"
+        }, callback = self.start_scraping)
+    
+    def start_scraping(self, response):
         items = QuoteItem()
 
         div_quotes = response.css("div.quote")
