@@ -22,3 +22,9 @@ class Quote_spider(scrapy.Spider):
             items["tag"] = tag
 
             yield items
+
+        # Going to next page in sites with "next page" button
+        next_page = response.css("li.next a::attr(href)").get()
+
+        if next_page is not None:
+            yield response.follow(next_page, callback = self.parse)

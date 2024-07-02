@@ -15,3 +15,6 @@ pyvenv.cfg
 # Arquivos de compilação do Python
 *.pyc
 __pycache__/
+
+.idea/
+*.db
